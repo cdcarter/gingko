@@ -12,6 +12,9 @@
 <%= label_tag "team_a_bpts", "Bonus points: " %>
 <%= text_field_tag "team_a_bpts" %><br/>
 
+<%= label_tag "team_a_points", "Total points: " %>
+<%= text_field_tag "team_a_points" %><br/>
+
 <table>
   <tr><th>Name</th><th>15 Pt Powers</th><th>10 Pt Tossups</th><th>-5 Pt Interrupts</th><th>Tossups Heard</th></tr>
   <% for player in @a.players %>
@@ -38,6 +41,8 @@
 <%= label_tag "team_b_bpts", "Bonus points: " %>
 <%= text_field_tag "team_b_bpts" %><br/>
 
+<%= label_tag "team_b_points", "Total points: " %>
+<%= text_field_tag "team_b_points" %><br/>
 
 <table>
   <tr><th>Name</th><th>15 Pt Powers</th><th>10 Pt Tossups</th><th>-5 Pt Interrupts</th><th>Tossups Heard</th></tr>
