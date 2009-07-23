@@ -11,9 +11,7 @@ class Team < ActiveRecord::Base
   has_many :team_results
   
   belongs_to :tournament
-  
-  #TODO: add stats methods
-  
+    
   def wins
     self.team_results.select {|tr| tr.win? }.size
   end

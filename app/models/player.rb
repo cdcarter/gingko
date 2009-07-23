@@ -3,9 +3,7 @@ class Player < ActiveRecord::Base
   belongs_to :team
   
   has_many :player_results
-  
-  #TODO: add stats methods
-  
+    
   def tuh
     self.player_results.inject(0) { |m,o| m += o.tuh }
   end

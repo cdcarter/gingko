@@ -9,7 +9,7 @@
     <tr><th>id</th><th>Team</th><th>Team</th><th>Room</th></tr>
     <% games.each do |game| %>
       <tr>
-        <td><%= game.id %></td>
+        <td><%= link_to game.id, :controller => :stats_entry, :action => :enter, :id => game.id %></td>
         <td><%= game.teams[0].name %></td>
         <td><%= game.teams[1].name %></td>
         <td><%= game.room.name %></td>
