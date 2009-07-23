@@ -1,0 +1,17 @@
+<% for team in @teams %>
+<div class="teamschedule">
+<p><span style="font-size:40px; font-weight:bold;"><%= team.tournament.name %></span><br/>
+<span style="font-size:20px"><%= team.tournament.date %></span><br/>
+<span style="font-size:20px"><%= team.tournament.location %></span><br/>
+<span style="font-size:30px"><%= team.name %></span></p>
+
+<table class="center">
+  <tr><th>Player</th></tr>
+  <% for player in team.players %>
+    <tr><td><%= player.name %></td></tr>
+  <% end %>
+
+</table>
+<p class="break">If any of these names or spellings are incorrect, please fix them and return this sheet to your first round moderator or to the stat room.</p>
+</div>
+<% end %>

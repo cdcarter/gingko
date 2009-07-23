@@ -1,0 +1,21 @@
+<% for team in @teams %>
+<div class="teamschedule">
+<p><span style="font-size:30px; font-weight:bold;"><%= team.tournament.name %></span><br/>
+  <span style="font-size:13px"><%= team.tournament.date %></span><br/>
+  <span style="font-size:13px"><%= team.tournament.location %></span><br/>
+  <span style="font-size:20px"><%= team.name %></span></p>
+
+<table class="center">
+  <tr><th>Round</th><th>Opponent</th><th>Room</th></tr>
+  <% team.games.each do |game|%>
+    <tr>
+      <td><%= game.round %></td>
+      <td><%= game.teams.select {|x| x.name != team.name}.first.name %></td>
+      <td><%= game.room.name %></td>
+    </tr>
+  <% end %>
+</table>
+<p class="break"></p>
+
+</div>
+<% end %>

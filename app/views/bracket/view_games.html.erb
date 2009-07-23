@@ -1,0 +1,31 @@
+<h2>Viewing games for <%= @bracket.name %> bracket</h2>
+
+<p>In <%= @bracket.phase.name %> phase of <%= @bracket.tournament.name %>.</p>
+
+<% if @games_by_round.any? %>
+<% @games_by_round.each do |round,games| %>
+  <h3>Round <%= round %></h3>
+  <table>
+    <tr><th>id</th><th>Team</th><th>Team</th><th>Room</th></tr>
+    <% games.each do |game| %>
+      <tr>
+        <td><%= game.id %></td>
+        <td><%= game.teams[0].name %></td>
+        <td><%= game.teams[1].name %></td>
+        <td><%= game.room.name %></td>
+        <td><%= link_to "delete", {:action => "destroy_game", :id => game.id}, :confirm => 'Are you sure?' %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<% end %>
+
+<p>
+  <%= link_to "Return to #{@bracket.name}", :action => :view, :id => @bracket %> |
+  <%= link_to "Add a game", :action => :add_game, :id => @bracket %> 
+  <% unless @games_by_round.any? %>
+  | <%= link_to "Generate round robin", {:action => :round_robin, :id => @bracket}, :confirm => 'Are you sure?' %>
+  <% else %>
+  | <%= link_to "Delete all games", {:action => :destroy_all_games, :id => @bracket}, :confirm => 'Are you sure?'%>
+  <% end %>
+</p>

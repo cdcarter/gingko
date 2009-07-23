@@ -1,0 +1,8 @@
+<h1>Add team for <%= @bracket.name%> bracket</h1>
+
+<% form_for :bracketing do |f| %>
+  <p>
+    <label for="bracketing[team_id]">Team: </label>
+      <%= collection_select(:bracketing, :team_id, @teams, :id, :name) %></p>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="invoice">
+  
+  <span style="font-size:30px; font-weight:bold;"><%= @team.tournament.name %></span><br/>
+  <span style="font-size:13px"><%= @team.tournament.date %></span><br/>
+  <span style="font-size:13px"><%= @team.tournament.location %></span><br/>
+  <span style="font-size:20px">Invoice for <%= @team.name %></span>
+  
+  <table class="center">
+    <tr><td><%= (1..40).map{"&nbsp;"}.join("") %>Base Fee <%= (1..40).map{ "&nbsp;"}.join("") %></td><td></td><td>$<%= @tournament.base_fee %></td></tr>
+    <tr><td>Fee Modifier</td><td></td><td><%= "+" if @team.fee > 0 %>$<%= @team.fee %></td></tr>
+    <tr><td>Buzzer Discount</td><td>$<%= @tournament.buzzer_discount %></td><td><%= (1..20).map{"&nbsp;"}.join("") %></td></tr>
+    <tr><td>Laptop Discount</td><td>$<%= @tournament.laptop_discount %></td><td><%= (1..20).map{"&nbsp;"}.join("") %></td></tr>
+    <tr><td>Moderator Discount</td><td>$<%= @tournament.moderator_discount %></td><td><%= (1..20).map{"&nbsp;"}.join("") %></td></tr>
+    <tr><th>Total</th><td></td><td><%= (1..20).map{"&nbsp;"}.join("") %>$<%= @fee %> <%= (1..20).map{"&nbsp;"}.join("") %></td></tr>
+  </table>
+  <p>Please make checks payable to <%= @tournament.director %></p>
+</div>

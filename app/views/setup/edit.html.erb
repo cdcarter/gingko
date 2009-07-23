@@ -1,0 +1,22 @@
+<h1>Edit Tournament</h1>
+
+<% form_for :tournament do |t| %>
+  <label for="tournament[name]">Tournament Name: </label>
+    <%= t.text_field :name %><br/>
+  <label for="tournament[director]">Tournament Director: </label>
+    <%= t.text_field :director %><br/>
+  <label for="tournament[date]">Date: </label>
+    <%= t.text_field :date %><br/>
+  <label for="tournament[location]">Location: </label>
+    <%= t.text_field :location %><br/>
+  <label for="tournament[base_fee]">Base Fee: </label>
+    <%= t.text_field :base_fee %><br/>
+  <label for="tournament[buzzer_discount]">Buzzer Discount: </label>
+    <%= t.text_field :buzzer_discount %><br/>
+  <label for="tournament[moderator_discount]">Moderator Discount: </label>
+    <%= t.text_field :moderator_discount %><br/>
+  <label for="tournament[laptop_dicount]">Laptop Discount: </label>
+    <%= t.text_field :laptop_discount %><br/>
+  
+  <%= t.submit %>
+<% end %>

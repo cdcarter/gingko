@@ -1,0 +1,24 @@
+<h1>Phase Setup</h1>
+<p>Viewing "<%= @phase.name %>" phase for <%= @phase.tournament.name %>.</p>
+
+<%= link_to "View Full Schedule", :action => "schedule", :id => @phase.id %>
+
+<div class="brackets">
+  <% if @phase.brackets.any? %>
+    <table>
+      <tr><th>Bracket</th><th>Size</th></tr>
+      <% @phase.brackets.each do |bracket| %>
+        <tr>
+          <td><%= link_to bracket.name, :controller => :bracket, :action => :view, :id => bracket %></td>
+          <td><%= bracket.teams.size %></td>
+        </tr>
+      <% end %>
+      <tr><td><%= link_to "New", :action => "add_bracket", :id => @phase.id %></td></tr>
+    </table>
+  <% else %>
+    There are no brackets listed for this phase. <%= link_to "Add one?", :action => "add_bracket", :id => @phase.id %>
+  <% end %>
+</div>
+<br/>
+
+<%= link_to "Back to #{@phase.tournament.name}", :controller => :setup, :action => :view, :id => @phase.tournament %>

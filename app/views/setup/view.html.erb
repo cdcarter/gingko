@@ -1,0 +1,55 @@
+<h1>Tournament Setup</h1>
+<p>Tournament Name: <%= @tournament.name %></p>
+<p>Tournament Director: <%= @tournament.director %></p>
+
+<div class="phases">
+  <% if @tournament.phases.any? %>
+    <table>
+      <tr><th>Phase</th><th>Size</th></tr>
+      <% @tournament.phases.each do |phase| %>
+        <tr>
+          <td><%= link_to phase.name, :controller => :phase, :action => :view, :id => phase.id %></td>
+          <td><%= phase.brackets.size %></td>
+        </tr>
+      <% end %>
+      <tr><td><%= link_to "New", :action => "add_phase", :id => @tournament.id %></td></tr>
+    </table>
+  <% else %>
+    There are no phases listed for this tournament. <%= link_to "Add one?", :action => "add_phase", :id => @tournament.id %>
+  <% end %>
+</div>
+<br/>
+
+<div class="teams">
+  <% if @tournament.teams.any? %>
+    <table>
+      <tr><th>Team</th></tr>
+      <% @tournament.teams.each do |team| %>
+        <tr>
+          <td><%= link_to team.name, :controller => :team, :action => :view, :id => team %></td>
+          <td><%= link_to "Invoice", :controller => :team, :action => :invoice, :id => team %></td>
+        </tr>
+      <% end %>
+      <tr><td><%= link_to "New", :action => "add_team", :id => @tournament.id %></td></tr>
+    </table>
+  <% else %>
+    There are no teams registered for this tournament. <%= link_to "Add one?", :action => "add_team", :id => @tournament.id %>
+  <% end %>
+</div>
+<br/>
+
+<div class="rooms">
+  <% if @tournament.rooms.any? %>
+    <table>
+      <tr><th>Room</th></tr>
+      <% @tournament.rooms.each do |room| %>
+        <tr><td><%= room.name %></td></tr>
+      <% end %>
+      <tr><td><%= link_to "New", :action => "add_room", :id => @tournament.id %></td></tr>
+    </table>
+  <% else %>
+    There are no rooms listed for this tournament. <%= link_to "Add one?", :action => "add_room", :id => @tournament.id %>
+  <% end %>
+</div>
+
+<p><%= link_to "Edit", :action => :edit, :id => @tournament.id %> | <%= link_to "Food Orders", :action => :food_orders, :id => @tournament.id %></p>

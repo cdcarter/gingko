@@ -1,0 +1,10 @@
+  <table>
+    <tr><th>Name</th><th>Director</th><th>Size</th></tr>
+    <% @tournaments.each do |t| %>
+      <tr>
+        <td><%= link_to t.name, :action => :list, :id => t.id %></td>
+        <td><%= t.director %></td>
+        <td><%= t.teams.length %></td>
+      </tr>
+    <% end %>
+  </table>

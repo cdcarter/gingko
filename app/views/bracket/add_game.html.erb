@@ -1,0 +1,24 @@
+<h1>Add game for <%= @bracket.name%> bracket</h1>
+
+<% form_for :game do |f| %>
+  <p>
+    <label for="game[round]">Round: </label>
+      <%= f.text_field :round %>
+  </p>
+
+  <p>
+    <label for="game[room]">Rooms: </label>
+      <%= collection_select(:game, :room_id, @rooms, :id, :name) %>
+  </p>
+
+  <p>
+    <label for="game[team1_id]">Team: </label>
+      <%= collection_select(:game, :team1_id, @teams, :id, :name) %>
+  </p>
+  
+  <p>
+    <label for="game[team2_id]">Team: </label>
+      <%= collection_select(:game, :team2_id, @teams, :id, :name) %>
+  </p>
+  <%= f.submit %>
+<% end %>

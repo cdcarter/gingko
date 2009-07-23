@@ -1,0 +1,26 @@
+<div class="teamschedule">
+
+<span style="font-size:30px; font-weight:bold;"><%= @team.tournament.name %></span><br/>
+<span style="font-size:13px"><%= @team.tournament.date %></span><br/>
+<span style="font-size:13px"><%= @team.tournament.location %></span><br/>
+<span style="font-size:20px"><%= @team.name %></span>
+
+
+<% @g.each do |phase,games|%>
+
+<p>
+  <h2><%= games[0].phase.name %></h2>
+  <table class="center">
+    <tr><th>Round</th><th>Opponent</th><th>Room</th></tr>
+    <% games.each do |game|%>
+      <tr>
+        <td><%= game.round %></td>
+        <td><%= game.teams.select {|x| x.name != @team.name}.first.name %></td>
+        <td><%= game.room.name %></td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
+<%end%>
+</div>

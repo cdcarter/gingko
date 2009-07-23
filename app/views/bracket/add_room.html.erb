@@ -1,0 +1,8 @@
+<h1>Add room for <%= @bracket.name%> bracket</h1>
+
+<% form_for :room_assignment do |f| %>
+  <p>
+    <label for="room_assignment[room_id]">Room: </label>
+      <%= collection_select(:room_assignment, :room_id, @rooms, :id, :name) %></p>
+  <%= f.submit %>
+<% end %>

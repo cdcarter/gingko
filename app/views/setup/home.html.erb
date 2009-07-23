@@ -1,0 +1,15 @@
+<% if @tournaments.any? %>
+  <table>
+    <tr><th>Name</th><th>Director</th><th>Size</th></tr>
+    <% @tournaments.each do |t| %>
+      <tr>
+        <td><%= link_to t.name, :action => :view, :id => t.id %></td>
+        <td><%= t.director %></td>
+        <td><%= t.teams.length %></td>
+      </tr>
+    <% end %>
+    <tr><td><%= link_to "Create one!", :action => :new %></td></tr>
+  </table>
+<% else %>
+  <p>There are no tournaments in the database.  <%= link_to "Create one!", :action => :new %></p>
+<% end %>

@@ -1,0 +1,11 @@
+<h1>Participants in <%= @tournament.name %></h1>
+
+<p>Click your name to register a food order.  If you are not listed, please email Christian Carter at cdcarter@gmail.com</p>  
+<p>If you are staffing CO and want to get in on a food order, similarily 
+email Christian Carter</p>
+<table>
+  <tr><th>Player</th><th>Ordered?</th></tr>
+<% for player in @players %>
+  <tr><td><%= link_to player.name, :action => :order, :id => player.id %></td><td><%= player.ordered %></td></tr>
+<% end %>
+</table>

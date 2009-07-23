@@ -1,0 +1,12 @@
+<h1>Order food for <%= @player.tournament.name %>: <%= @player.name %></h1>
+
+<p>This is to involve yourself in the group pizza order taking place this year.  The cost is $8/person and will be required to be paid at check in.  We are ordering cheese, pepperoni, and sausage pizzas.  If you order pizza and would like to then remove your order, please email Christian Carter at cdcarter@gmail.com.</p>
+
+<h2>You will be required to pay for your pizza if you order and do not cancel!  Make sure you bring you $8 to the tournament!</h2>
+
+<% form_for :player do |f| %>
+  <label for="player[email]">Email Address in case we need to contact you: </label>
+  <%= f.text_field :email %><br/>
+  
+  <%= f.submit "Order your pizza" %>
+<% end %>

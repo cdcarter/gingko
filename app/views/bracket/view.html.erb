@@ -1,0 +1,48 @@
+<h1>Bracket Setup</h1>
+<p>Viewing "<%= @bracket.name %>" bracket of "<%= @bracket.phase.name %>" phase for <%= @bracket.tournament.name %>.</p>
+
+<div class="games">
+  <%= link_to "Add a game", :action => :add_game, :id => @bracket %> |
+  <%= link_to "View games", :action => :view_games, :id => @bracket %>
+  <% unless @bracket.games.any? %>
+    | <%= link_to "Generate the round robin", {:action => :round_robin, :id => @bracket}, :confirm => 'Are you sure?' %>
+  <% end %>
+</div>
+
+<div class="teams">
+  <% if @bracket.teams.any? %>
+    <table>
+      <tr><th>Team</th></tr>
+      <% @bracket.teams.each do |team| %>
+        <tr>
+          <td><%= team.name %></td>
+          <td><%= link_to "Schedule", :action => :team_schedule, :id => team.id, :bracket => @bracket %></td>
+        </tr>
+      <% end %>
+      <tr><td><%= link_to "New", :action => "add_team", :id => @bracket.id %></td></tr>
+    </table>
+  <% else %>
+    There are no teams registered for this bracket. <%= link_to "Add one?", :action => "add_team", :id => @bracket.id %>
+  <% end %>
+</div>
+<br/>
+
+<div class="rooms">
+  <% if @bracket.rooms.any? %>
+    <table>
+      <tr><th>Room</th></tr>
+      <% @bracket.rooms.each do |room| %>
+        <tr>
+          <td><%= room.name %></td>
+          <td><%= link_to "Schedule", :action => :room_schedule, :id => room.id, :bracket => @bracket %></td>
+        </tr>
+      <% end %>
+      <tr><td><%= link_to "Add", :action => "add_room", :id => @bracket.id %></td></tr>
+    </table>
+  <% else %>
+    There are no rooms listed for this bracket. <%= link_to "Add one?", :action => "add_room", :id => @bracket.id %>
+  <% end %>
+</div>
+<br/>
+
+<%= link_to "Return to #{@bracket.phase.name} phase", :controller => "phase", :action => :view, :id => @bracket.phase %>

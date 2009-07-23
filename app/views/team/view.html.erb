@@ -1,0 +1,31 @@
+<h1>Team Setup</h1>
+<p>Viewing "<%= @team.name %>" in <%= @team.tournament.name %>.</p>
+
+<table>
+  <tr><th>Fee</th><td><%= @team.fee %></td></tr>
+  <tr><th>Info</th><td><%= @team.info %></td></tr>
+  <% for bracket in @team.brackets %>
+    <tr>
+      <th><%= bracket.phase.name %> phase bracket</th>
+      <td><%= link_to bracket.name, :controller=>:bracket,:action=>:team_schedule,:id=>@team,:bracket=>bracket %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Players</h2>
+<% if @team.players.any? %>
+  <table>
+    <tr><th>Name</th></tr>
+    <% for player in @team.players %>
+      <tr><td><%= player.name %></td><td><%= link_to "delete", {:action => "destroy_player", :id => player.id}, :confirm => 'Are you sure?' %></td></tr>
+    <% end %>
+    <tr><td><%= link_to "New", :action => :add_player, :id => @team.id %></td></tr>
+  </table>
+<% else %>
+<p>No players are rostered to this team.  <%= link_to "Add one?", :action => :add_player, :id => @team.id %></p>
+<% end %>
+
+<p><%= link_to "Invoice", :action => :invoice, :id => @team.id %> | <%= link_to "Schedule", :action => :team_schedule, :id => @team.id %></p>
+
+<p><%= link_to "Edit team", :action => :edit_team, :id => @team.id %> |
+  <%= link_to "Tournament", :controller => :setup, :action => :view, :id => @team.tournament.id %></p>

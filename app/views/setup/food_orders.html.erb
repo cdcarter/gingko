@@ -1,0 +1,13 @@
+<h1>Viewing food orders for <%= @tournament.name %></h1>
+
+<table>
+  <tr><th>Player</th><th>Team</th><th>Email</th><th>Ordered</th></tr>
+  <%for player in @players %>
+  <tr>
+    <td><%= player.name %></td>
+    <td><%= player.team.name%></td>
+    <td><%=player.email%></td>
+    <td><%=player.ordered %></td>
+  </tr>
+  <% end %>
+</table>

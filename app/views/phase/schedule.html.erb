@@ -1,0 +1,21 @@
+<h3>Viewing games for <%= @phase.name %> phase of <%= @phase.tournament.name %>.</h3>
+
+<% if @games.any? %>
+<% @games.each do |round,games| %>
+  <table>
+    <tr><th>round <%= round %></th><th>Team</th><th>Team</th><th>Room</th></tr>
+    <% games.each do |game| %>
+      <tr>
+        <td><%= game.id %></td>
+        <td><%= game.teams[0].name %></td>
+        <td><%= game.teams[1].name %></td>
+        <td><%= game.room.name %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<% end %>
+
+<p>
+  <%= link_to "Return to #{@phase.name}", :action => :view, :id => @pjase %> |
+</p>

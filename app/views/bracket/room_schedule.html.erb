@@ -1,0 +1,18 @@
+<div class="teamschedule">
+
+<h1>Schedule for <%= @room.name %></h1>
+
+<p>In bracket <%= @bracket.name %></p>
+
+<table class="center">
+  <tr><th>Round</th><th>Team 1</th><th>Team 2</th></tr>
+  <% @games.each do |game|%>
+    <tr>
+      <td><%= game.round %></td>
+      <td><%= game.teams[0].name %></td>
+      <td><%= game.teams[1].name %></td>
+    </tr>
+  <% end %>
+</table>
+
+</div>

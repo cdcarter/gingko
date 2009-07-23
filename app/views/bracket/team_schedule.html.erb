@@ -1,0 +1,26 @@
+<div class="teamschedule">
+
+<span style="font-size:30px; font-weight:bold;"><%= @team.tournament.name %></span><br/>
+<span style="font-size:13px"><%= @team.tournament.date %></span><br/>
+<span style="font-size:13px"><%= @team.tournament.location %></span><br/>
+<span style="font-size:20px"><%= @team.name %></span>
+<% if @bracket.phase.brackets.size > 1%>
+<p>In bracket <%= @bracket.name %></p>
+<% end %>
+
+<p>
+  <table class="center">
+    <tr><th>Round</th><th>Opponent</th><th>Room</th></tr>
+    <% @games.each do |game|%>
+      <tr>
+        <td><%= game[0] %></td>
+        <td><%= game[1].name %></td>
+        <td><%= game[2] %></td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
+<p><%= @bracket.phase.note %></p>
+
+</div>
