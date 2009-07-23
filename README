@@ -9,6 +9,7 @@ Other easy document production built in.
 Statistics all rolled up in there.
 
 == Usage ==
+git clone indefero
 script/server
 http://localhost:3000/setup/home
 
