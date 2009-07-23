@@ -1,0 +1,58 @@
+<h1>Entering statistics for <%= @game.id %> -- <%= @a.name %> vs <%= @b.name %></h1>
+
+<% form_tag :action => :enter, :id => @game.id do %>
+<div class="team_a">
+<h2><%= @a.name %></h2>
+<%= label_tag "team_a_tuh", "Tossups Heard: " %>
+<%= text_field_tag "team_a_tuh" %><br/>
+
+<%= label_tag "team_a_bhrd", "Bonuses Heard: " %>
+<%= text_field_tag "team_a_bhrd" %><br/>
+
+<%= label_tag "team_a_bpts", "Bonus points: " %>
+<%= text_field_tag "team_a_bpts" %><br/>
+
+<table>
+  <tr><th>Name</th><th>15 Pt Powers</th><th>10 Pt Tossups</th><th>-5 Pt Interrupts</th><th>Tossups Heard</th></tr>
+  <% for player in @a.players %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= text_field_tag "player_#{player.id}_powers" %></td>
+      <td><%= text_field_tag "player_#{player.id}_tossups" %></td>
+      <td><%= text_field_tag "player_#{player.id}_negs" %></td>
+      <td><%= text_field_tag "player_#{player.id}_tuh" %></td>
+    </tr>
+  <% end %>
+</table>
+
+</div>
+
+<div class="team_b">
+<h2><%= @b.name %></h2>
+<%= label_tag "team_b_tuh", "Tossups Heard: " %>
+<%= text_field_tag "team_b_tuh" %><br/>
+
+<%= label_tag "team_b_bhrd", "Bonuses Heard: " %>
+<%= text_field_tag "team_b_bhrd" %><br/>
+
+<%= label_tag "team_b_bpts", "Bonus points: " %>
+<%= text_field_tag "team_b_bpts" %><br/>
+
+
+<table>
+  <tr><th>Name</th><th>15 Pt Powers</th><th>10 Pt Tossups</th><th>-5 Pt Interrupts</th><th>Tossups Heard</th></tr>
+  <% for player in @b.players %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= text_field_tag "player_#{player.id}_powers" %></td>
+      <td><%= text_field_tag "player_#{player.id}_tossups" %></td>
+      <td><%= text_field_tag "player_#{player.id}_negs" %></td>
+      <td><%= text_field_tag "player_#{player.id}_tuh" %></td>
+    </tr>
+  <% end %>
+</table>
+
+</div>
+
+<div><p><%= submit_tag %></p></div>
+<% end %>
