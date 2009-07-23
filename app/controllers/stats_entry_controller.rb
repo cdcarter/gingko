@@ -7,11 +7,11 @@ class StatsEntryController < ApplicationController
   end
   
   def enter
-    @game = Game.find(params[:id], :include => [:teams. :tournament])
+    @game = Game.find(params[:id], :include => [:teams, :tournament])
     @a = @game.teams[0]
     @b = @game.teams[1]
     
-    if @request.post?
+    if request.post?
       @tr_a = TeamResult.new(:team => @a, :game => @game, :tournament => @game.tournament)
       @tr_b = TeamResult.new(:team => @b, :game => @game, :tournament => @game.tournament)
       
